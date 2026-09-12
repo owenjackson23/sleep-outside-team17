@@ -18,14 +18,16 @@ export default class ProductDetails {
             .addEventListener('click', this.addProductToCart.bind(this));
     }
 
-    addProductToCart(product) {
+    addProductToCart() {
         // Get the current cart from local storage
         const currentCart = getLocalStorage("so-cart") || [];
         // Add the product to the current cart
-        currentCart.push(product);
+        currentCart.push(this.product);
         // Update local storage with the new cart
         setLocalStorage("so-cart", currentCart);
     }
 
-    renderProductDetails() { }
+    renderProductDetails() {
+        document.querySelector('h3').innerHTML = this.product.NameWithoutBrand;
+    }
 }
