@@ -5,7 +5,7 @@ export default class ProductDetails {
         this.dataSource = dataSource;
     }
 
-    //init() { }
+    init() { }
 
     addProductToCart(product) {
         // Get the current cart from local storage
