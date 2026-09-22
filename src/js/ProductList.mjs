@@ -1,5 +1,5 @@
 import { renderListWithTemplate } from "./utils.mjs";
-import { ProductData } from "./ProductData.mjs";
+import ProductData from "./ProductData.mjs";
 
 function productCardTemplate(product) {
     return `<li class="product-card">
