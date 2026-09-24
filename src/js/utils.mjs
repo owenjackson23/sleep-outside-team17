@@ -32,8 +32,8 @@ export function getParam(param) {
 }
 
 
-export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false) {
-  const htmlStrings = list.map(templateFn);
+export function renderListWithTemplate(template, parentElement, list, position = "afterbegin", clear = false) {
+  const htmlStrings = list.map(template);
   if (clear) {
     parentElement.innerHTML = "";
   }
