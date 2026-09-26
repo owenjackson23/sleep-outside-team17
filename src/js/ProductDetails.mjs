@@ -39,8 +39,12 @@ function productDetailsTemplate(product) {
     const productImage = document.getElementById("productImage");
     productImage.src = product.Image;
     productImage.alt = product.NameWithoutBrand;
+    const usdPrice = new Intl.NumberFormat('en-US',
+        {
+            style: 'currency', currency: 'USD'
+        }).format(product.FinalPrice);
 
-    document.getElementById("productPrice").textContent = product.FinalPrice;
+    document.getElementById("productPrice").textContent = usdPrice;
     document.getElementById("productColor").textContent = product.Colors[0].ColorName;
     document.getElementById("productDesc").innerHTML = product.DescriptionHtmlSimple;
 
