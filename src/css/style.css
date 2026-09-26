@@ -99,7 +99,10 @@ p {
   color: var(--tertiary-color);
 }
 
-.title {}
+.title {
+  font-size: 2rem;
+  font-variant: small-caps;
+}
 
 button {
   padding: 0.5em 2em;
