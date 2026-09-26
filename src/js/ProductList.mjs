@@ -12,6 +12,14 @@ function productCardTemplate(product) {
         </li>`;
 }
 
+function toTitleCase(words) {
+    return words
+        .replace(/-/g, " ")
+        .split(" ")
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
+};
+
 export default class ProductList {
     constructor(category, dataSource, listElement) {
         this.category = category;
@@ -22,6 +30,8 @@ export default class ProductList {
     async init() {
         const list = await this.dataSource.getData(this.category);
         this.renderList(list);
+
+        document.querySelector(".title").textContent = toTitleCase(this.category);
     }
 
     renderList(list) {
