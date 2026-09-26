@@ -99,6 +99,8 @@ p {
   color: var(--tertiary-color);
 }
 
+.title {}
+
 button {
   padding: 0.5em 2em;
   background-color: var(--secondary-color);
@@ -155,10 +157,21 @@ button {
   text-align: center;
 }
 
+/* Styles for product grids */
+.product-grid {}
+
+.product-grid a {}
+
+.product-grid img {}
+
+/* End product grid styles */
+
 .products {
   margin-top: 2rem;
   padding: 1rem;
 }
+
+.products h2 {}
 
 .product-list {
   display: flex;
@@ -179,6 +192,7 @@ button {
   padding: 0.5em;
   border: 1px solid var(--light-grey);
   max-width: 250px;
+  text-align: center;
 }
 
 .product-card h2,
