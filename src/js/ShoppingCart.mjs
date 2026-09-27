@@ -37,8 +37,14 @@ export default class ShoppingCart {
     removeItem(index) {
         const cart = getLocalStorage("so-cart") || [];
 
-        // Remove one item at index
-        cart.splice(index, 1);
+        // Decrease quantity if greater than 1
+        if (cart[index].quantity > 1) {
+            cart[index].quantity--;
+        }
+        else {
+            // Remove item at index
+            cart.splice(index, 1);
+        }
         // Update cart
         setLocalStorage("so-cart", cart);
         // Render updated cart
