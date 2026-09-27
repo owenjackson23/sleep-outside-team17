@@ -6,7 +6,7 @@ function cartItemTemplate(item, index) {
         
         <a href="#" class="cart-card__image">
             <img
-            src="${item.Images.PrimaryMedium}"
+            src="/${item.Images.PrimaryMedium}"
             alt="${item.Name}"
             />
         </a>
