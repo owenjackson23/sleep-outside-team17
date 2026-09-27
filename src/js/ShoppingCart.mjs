@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 import { renderListWithTemplate } from "./utils.mjs";
 
 function cartItemTemplate(item) {
@@ -32,6 +32,17 @@ export default class ShoppingCart {
 
     async init() {
         this.renderCartContents(this.dataSource);
+    }
+
+    removeItem(index) {
+        const cart = getLocalStorage("so-cart") || [];
+
+        // Remove one item at index
+        cart.splice(index, 1);
+        // Update cart
+        setLocalStorage("so-cart", cart);
+        // Render updated cart
+        this.renderCartContents(cart);
     }
 
     renderCartContents(cartContents) {
