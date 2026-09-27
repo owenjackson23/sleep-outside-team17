@@ -61,5 +61,7 @@ export default class ShoppingCart {
         renderListWithTemplate(cartItemTemplate, this.listElement, cartContents, "afterbegin", true);
 
         document.getElementById("cart-total").textContent = `Total: $${cartTotal.toFixed(2)}`;
+
+        console.log(cartContents);
     }
 }
