@@ -58,7 +58,7 @@ export default class ShoppingCart {
             document.querySelector(".cart-footer").classList.remove("hide");
             cartTotal = cartContents.reduce((total, item) => total + parseFloat(item.FinalPrice), 0);
         }
-        renderListWithTemplate(cartItemTemplate, this.listElement, cartContents);
+        renderListWithTemplate(cartItemTemplate, this.listElement, cartContents, "afterbegin", true);
 
         document.getElementById("cart-total").textContent = `Total: $${cartTotal.toFixed(2)}`;
     }
