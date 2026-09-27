@@ -14,7 +14,7 @@ function cartItemTemplate(item, index) {
             <h2 class="card__name">${item.Name}</h2>
         </a>
         <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-        <p class="cart-card__quantity">qty: ${item.Quantity}</p>
+        <p class="cart-card__quantity">qty: ${item.quantity}</p>
         <p class="cart-card__price">$${item.FinalPrice}</p>
         <a href="#" class="cart-card__remove" data-index="${index}">X</a>
     </li>`;
@@ -56,7 +56,7 @@ export default class ShoppingCart {
         }
         else {
             document.querySelector(".cart-footer").classList.remove("hide");
-            cartTotal = cartContents.reduce((total, item) => total + (parseFloat(item.FinalPrice) * item.Quantity), 0);
+            cartTotal = cartContents.reduce((total, item) => total + (parseFloat(item.FinalPrice) * item.quantity), 0);
         }
         renderListWithTemplate(cartItemTemplate, this.listElement, cartContents, "afterbegin", true);
 
