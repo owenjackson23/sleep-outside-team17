@@ -54,7 +54,7 @@ export default class CheckoutProcess {
         itemNumElement.innerText = this.list.length;
 
         this.subtotal = this.list.reduce((total, item) => total + (parseFloat(item.FinalPrice) * item.quantity), 0);
-        summaryElement.innerText = `$${this.subtotal}`;
+        subtotalElement.innerText = `$${this.subtotal}`;
     }
 
     calculateOrderTotal() {
