@@ -104,10 +104,6 @@ export default class CheckoutProcess {
         order.shipping = this.shipping;
         order.items = packageItems(this.list);
 
-        // Temporary
-        console.log(order);
-        console.log(order.expiration);
-
         try {
             const response = await exServices.checkout(order);
             console.log(response);
