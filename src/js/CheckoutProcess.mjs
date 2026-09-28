@@ -20,7 +20,7 @@ export default class CheckoutProcess {
         );
 
         const itemNumElement = document.querySelector(
-            this.outputSelector + " #numItems"
+            `${this.outputSelector} #numItems`
         );
         // Number of items in the cart
         itemNumElement.innerText = this.list.length;
