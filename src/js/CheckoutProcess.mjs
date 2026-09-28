@@ -1,6 +1,8 @@
 import { getLocalStorage } from "./utils.mjs";
 import ExternalServices from "./ExternalServices.mjs";
 
+const exServices = new ExternalServices();
+
 function packageItems(items) {
     const packagedItems = items.map((item) => {
         return {
@@ -90,7 +92,7 @@ export default class CheckoutProcess {
         orderTotal.innerText = `$${this.orderTotal.toFixed(2)}`;
     }
 
-    async checkout(form) {
+    async checkout() {
         const formElement = document.forms["checkout"];
         const order = formDataToJSON(formElement);
 
@@ -101,7 +103,7 @@ export default class CheckoutProcess {
         order.items = packageItems(this.list);
 
         try {
-            const response = await services.checkout(order);
+            const response = await exServices.checkout(order);
             console.log(response);
         }
         catch (error) {
