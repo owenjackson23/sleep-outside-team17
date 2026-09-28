@@ -90,7 +90,7 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square > div {
+.logo--square>div {
   margin-top: -1.7em;
 }
 
@@ -299,6 +299,27 @@ a.cart-card__remove:hover {
   background-color: var(--tertiary-color);
   color: white;
   cursor: pointer;
+}
+
+/* start form styles */
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+
+.checkout-form fieldset {
+  margin: .5rem 0;
+  padding: .5rem;
+
+  border: 2px solid var(--tertiary-color);
+}
+
+.checkout-summary {
+  width: 30%;
+
+  justify-self: center;
+  margin: 0 auto;
 }
 
 @media screen and (min-width: 500px) {
