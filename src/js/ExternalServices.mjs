@@ -1,14 +1,26 @@
 const baseURL = import.meta.env.VITE_SERVER_URL;
 
-function convertToJson(res) {
+// function convertToJson(res) {
+//   if (res.ok) {
+//     return res.json();
+//   } else {
+//     throw new Error("Bad Response");
+//   }
+// }
+
+// Temporary
+async function convertToJson(res) {
+  const data = await res.json();
+
   if (res.ok) {
-    return res.json();
+    return data;
   } else {
-    throw new Error("Bad Response");
+    console.log(data);
+    throw new Error(JSON.stringify(data));
   }
 }
 
-export default class ProductData {
+export default class ExternalServices {
   constructor() {
     // this.category = category;
     // this.path = `../json/${this.category}.json`;
@@ -31,5 +43,16 @@ export default class ProductData {
 
     // const products = await this.getData();
     // return products.find((item) => item.Id === id);
+  }
+
+  async checkout(payload) {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    };
+    return await fetch(`${baseURL}checkout/`, options).then(convertToJson);
   }
 }

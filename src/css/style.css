@@ -301,6 +301,27 @@ a.cart-card__remove:hover {
   cursor: pointer;
 }
 
+/* start form styles */
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+
+.checkout-form fieldset {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+
+  border: 2px solid var(--tertiary-color);
+}
+
+.checkout-summary {
+  width: 30%;
+
+  justify-self: center;
+  margin: 0 auto;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
