@@ -1,6 +1,18 @@
 import { getLocalStorage } from "./utils.mjs";
 import ExternalServices from "./ExternalServices.mjs";
 
+function packageItems(items) {
+    const packagedItems = items.map((item) => {
+        return {
+            id: item.Id,
+            name: item.Name,
+            price: item.FinalPrice,
+            quantity: item.quantity,
+        };
+    });
+    return packagedItems;
+}
+
 export default class CheckoutProcess {
     constructor(key, outputSelector) {
         this.key = key;
