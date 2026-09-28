@@ -8,11 +8,11 @@ order.init();
 
 // Blur is when the element goes from focused to not focused
 document
-    .getElementById(zip)
+    .getElementById("zip")
     .addEventListener("blur", order.calculateOrderTotal.bind(order));
 
 document
-    .getElementById(checkoutSubmit)
+    .getElementById("checkoutSubmit")
     .addEventListener("click", (event) => {
         event.preventDefault();
         order.checkout();
