@@ -53,7 +53,7 @@ export default class CheckoutProcess {
         );
         // Number of items in the cart
         this.numItems = this.list.reduce((total, item) => total + item.quantity, 0);
-        itemNumElement.innerText = numItems;
+        itemNumElement.innerText = this.numItems;
 
         this.subtotal = this.list.reduce((total, item) => total + (parseFloat(item.FinalPrice) * item.quantity), 0);
         subtotalElement.innerText = `$${this.subtotal}`;
