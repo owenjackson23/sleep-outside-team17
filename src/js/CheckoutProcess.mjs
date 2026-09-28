@@ -13,6 +13,17 @@ function packageItems(items) {
     return packagedItems;
 }
 
+function formDataToJSON(formElement) {
+    const formData = new FormData(formElement);
+    const convertedJSON = {};
+
+    formData.forEach(function (value, key) {
+        convertedJSON[key] = value;
+    });
+
+    return convertedJSON;
+}
+
 export default class CheckoutProcess {
     constructor(key, outputSelector) {
         this.key = key;
@@ -77,5 +88,24 @@ export default class CheckoutProcess {
         tax.innerText = `$${this.tax.toFixed(2)}`;
         shipping.innerText = `$${this.shipping.toFixed(2)}`;
         orderTotal.innerText = `$${this.orderTotal.toFixed(2)}`;
+    }
+
+    async checkout(form) {
+        const formElement = document.forms["checkout"];
+        const order = formDataToJSON(formElement);
+
+        order.orderDate = new Date().toISOString();
+        order.orderTotal = this.orderTotal;
+        order.tax = this.tax;
+        order.shipping = this.shipping;
+        order.items = packageItems(this.list);
+
+        try {
+            const response = await services.checkout(order);
+            console.log(response);
+        }
+        catch (error) {
+            console.log(error);
+        }
     }
 }
