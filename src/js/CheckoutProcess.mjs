@@ -9,9 +9,14 @@ export default class CheckoutProcess {
         this.orderTotal = 0;
     }
 
+    init() {
+        this.list = getLocalStorage(this.key);
+        this.calculateItemSummary();
+    }
+
     calculateItemSummary() {
         const subtotalElement = document.querySelector(
-            this.outputSelector + " #subtotal"
+            `${this.outputSelector} #subtotal`
         );
 
         const itemNumElement = document.querySelector(
@@ -22,5 +27,40 @@ export default class CheckoutProcess {
 
         this.subtotal = this.list.reduce((total, item) => total + (parseFloat(item.FinalPrice) * item.quantity), 0);
         summaryElement.innerText = `$${this.subtotal}`;
+    }
+
+    calculateOrderTotal() {
+        // Tax at 6%
+        this.tax = (this.subtotal * 0.06);
+
+        // First item is $10, additional items $2
+        this.shipping = 10 + (this.list.length - 1) * 2;
+
+        // Total
+        this.orderTotal = (
+            parseFloat(this.itemTotal) +
+            parseFloat(this.tax) +
+            parseFloat(this.shipping)
+        )
+
+        // Display
+        this.displayTotals();
+    }
+
+    displayOrderTotals() {
+        const tax = document.querySelector(
+            `${this.outputSelector} #tax`
+        );
+        const shipping = document.querySelector(
+            `${this.outputSelector} #shippingCost`
+        );
+        const orderTotal = document.querySelector(
+            `${this.outputSelector} #orderTotal`
+        );
+
+        // Displays totals to 2 decimal places
+        tax.innerText = `$${this.tax.toFixed(2)}`;
+        shipping.innerText = `$${this.shipping.toFixed(2)}`;
+        orderTotal.innerText = `$${this.orderTotal.toFixed(2)}`;
     }
 }
