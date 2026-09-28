@@ -11,14 +11,9 @@ order.init();
 //     .getElementById("zip")
 //     .addEventListener("blur", order.calculateOrderTotal.bind(order));
 
-const zipField = document.getElementById("zip");
-
-console.log(zipField);
-
-zipField.addEventListener("blur", () => {
-    console.log("blur fired");
-    order.calculateOrderTotal();
-});
+document
+    .getElementById("zip")
+    .addEventListener("blur", order.calculateOrderTotal(order));
 
 document
     .getElementById("checkoutSubmit")
