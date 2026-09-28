@@ -72,7 +72,7 @@ export default class CheckoutProcess {
         )
 
         // Display
-        this.displayTotals();
+        this.displayOrderTotals();
     }
 
     displayOrderTotals() {
