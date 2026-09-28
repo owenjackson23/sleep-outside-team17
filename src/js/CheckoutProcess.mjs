@@ -66,7 +66,7 @@ export default class CheckoutProcess {
 
         // Total
         this.orderTotal = (
-            parseFloat(this.itemTotal) +
+            parseFloat(this.subtotal) +
             parseFloat(this.tax) +
             parseFloat(this.shipping)
         )
