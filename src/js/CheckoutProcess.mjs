@@ -60,6 +60,8 @@ export default class CheckoutProcess {
     }
 
     calculateOrderTotal() {
+        console.log("calculateOrderTotal running");
+
         // Tax at 6%
         this.tax = (this.subtotal * 0.06);
 
