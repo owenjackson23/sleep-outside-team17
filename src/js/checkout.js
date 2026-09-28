@@ -1,5 +1,5 @@
 import { loadHeaderFooter } from "./utils.mjs";
-import CheckoutProcess from "./CheckoutProcess.mjs"
+import CheckoutProcess from "./CheckoutProcess.mjs";
 
 loadHeaderFooter();
 
@@ -12,12 +12,10 @@ order.init();
 //     .addEventListener("blur", order.calculateOrderTotal.bind(order));
 
 document
-    .getElementById("zip")
-    .addEventListener("blur", order.calculateOrderTotal(order));
+  .getElementById("zip")
+  .addEventListener("blur", order.calculateOrderTotal(order));
 
-document
-    .getElementById("checkoutSubmit")
-    .addEventListener("click", (event) => {
-        event.preventDefault();
-        order.checkout();
-    });
+document.getElementById("checkoutSubmit").addEventListener("click", (event) => {
+  event.preventDefault();
+  order.checkout();
+});
