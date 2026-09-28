@@ -31,6 +31,7 @@ export default class CheckoutProcess {
         this.key = key;
         this.outputSelector = outputSelector;
         this.list = [];
+        this.numItems = 0;
         this.subtotal = 0;
         this.shipping = 0;
         this.tax = 0;
@@ -51,7 +52,8 @@ export default class CheckoutProcess {
             `${this.outputSelector} #numItems`
         );
         // Number of items in the cart
-        itemNumElement.innerText = this.list.length;
+        this.numItems = this.list.reduce((total, item) => total + item.quantity, 0);
+        itemNumElement.innerText = numItems;
 
         this.subtotal = this.list.reduce((total, item) => total + (parseFloat(item.FinalPrice) * item.quantity), 0);
         subtotalElement.innerText = `$${this.subtotal}`;
@@ -62,7 +64,7 @@ export default class CheckoutProcess {
         this.tax = (this.subtotal * 0.06);
 
         // First item is $10, additional items $2
-        this.shipping = 10 + (this.list.length - 1) * 2;
+        this.shipping = 10 + (this.numItems - 1) * 2;
 
         // Total
         this.orderTotal = (
