@@ -14,13 +14,10 @@ document
 
 document.forms.checkout.addEventListener("submit", (event) => {
   event.preventDefault();
-  console.log("Checking form validity");
   if (event.currentTarget.checkValidity()) {
     order.checkout();
-    console.log("Submitting form");
   }
   else {
     event.currentTarget.reportValidity();
-    console.log("Form is invalid");
   }
 });
