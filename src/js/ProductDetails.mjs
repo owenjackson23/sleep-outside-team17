@@ -34,6 +34,7 @@ export default class ProductDetails {
         }
         // Update local storage with the new cart
         setLocalStorage("so-cart", currentCart);
+        alertMessage(`${this.product.Name} was added to your cart.`, false);
     }
 
     renderProductDetails() {
