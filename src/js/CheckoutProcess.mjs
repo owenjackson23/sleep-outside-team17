@@ -95,7 +95,7 @@ export default class CheckoutProcess {
     }
 
     async checkout() {
-        const formElement = document.forms["checkout"];
+        const formElement = document.forms.checkout;
         const order = formDataToJSON(formElement);
 
         order.orderDate = new Date().toISOString();
@@ -105,11 +105,16 @@ export default class CheckoutProcess {
         order.items = packageItems(this.list);
 
         try {
-            const response = await exServices.checkout(order);
-            console.log(response);
+            await exServices.checkout(order);
+            setLocalStorage(this.key, []);
+            window.location.assign("/checkout/success.html");
         }
         catch (error) {
-            console.log(error);
+            removeAllAlerts();
+            const messages = error.message && typeof error.message === "object"
+                ? Object.values(error.message)
+                : [error.message || "Unable to place your order."];
+            messages.forEach((message) => alertMessage(message));
         }
     }
 }
