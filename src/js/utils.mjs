@@ -82,3 +82,7 @@ export function alertMessage(message, scroll = true) {
   main.prepend(alert);
   if (scroll) window.scrollTo(0, 0);
 }
+
+export function removeAllAlerts() {
+  document.querySelectorAll(".alert").forEach((alert) => alert.remove());
+}
