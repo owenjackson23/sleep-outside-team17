@@ -16,8 +16,7 @@ document.forms.checkout.addEventListener("submit", (event) => {
   event.preventDefault();
   if (event.currentTarget.checkValidity()) {
     order.checkout();
-  }
-  else {
+  } else {
     event.currentTarget.reportValidity();
   }
 });
