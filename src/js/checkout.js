@@ -12,7 +12,7 @@ document
   .getElementById("zip")
   .addEventListener("blur", order.calculateOrderTotal.bind(order));
 
-document.getElementById("checkoutSubmit").addEventListener("submit", (event) => {
+document.forms.checkout.addEventListener("submit", (event) => {
   event.preventDefault();
   console.log("Checking form validity");
   if (event.currentTarget.checkValidity()) {
